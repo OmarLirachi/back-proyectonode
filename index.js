@@ -13,7 +13,16 @@ app.use(bodyparser.urlencoded({
 app.use(bodyparser.json())
 
 //conexion a la bd
+const uri = `mongodb+srv://${process.env.USUARIO}:${process.env.PASSWORD}@cluster0.b6rhxr6.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`
 
+mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log('conectado a la bd')
+}).catch(e => {
+    console.log('error: ',e)
+})
 //importar rutas
 const authRoutes=require('./routes/auth')
 
