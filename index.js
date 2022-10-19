@@ -15,8 +15,11 @@ app.use(bodyparser.json())
 //conexion a la bd
 
 //importar rutas
+const authRoutes=require('./routes/auth')
 
 //ruta del middleware
+app.use('/api/user', authRoutes)
+
 app.get('/', (req, res)=> {
     res.json({
         estado: true,
