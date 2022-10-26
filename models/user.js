@@ -1,41 +1,42 @@
-const { date } = require('@hapi/joi/lib/template')
 const mongoose = require('mongoose')
 
 const userSchema = mongoose.Schema({
-    name:{
+    name: {
         type: String,
         required: true,
-        min: 4,
+        min: 6,
         max: 255
     },
-
-    address:{
+    address: {
         type: String,
         required: true,
         max: 255
     },
-
-    lastname:{
+    lastname: {
         type: String,
         required: true,
-        min: 4,
+        min: 6,
         max: 255
     },
-
-    age:{
+    age: {
         type: Number,
         required: true,
     },
-
     date: {
         type: Date,
         default: Date.now
     },
     password: {
-    type: String,
-    required: true,
-    minLenght: 4
+        type: String,
+        required: true,
+        minlength: 6
+    },
+    username: {
+        type: String,
+        required: true,
+        min: 6,
+        max: 255
     }
 })
 
-module.exports = mongoose.model('user', userSchema)
+module.exports = mongoose.model('User', userSchema)
